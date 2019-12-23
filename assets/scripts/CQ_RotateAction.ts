@@ -11,7 +11,9 @@
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class CQ_RotateAction extends cc.Component {
+
+    /* Variables */
 
     @property(cc.Label)
     label: cc.Label = null;
@@ -19,13 +21,22 @@ export default class NewClass extends cc.Component {
     @property
     text: string = 'hello';
 
-    // LIFE-CYCLE CALLBACKS:
+    /* Setter & Getter */
 
-    // onLoad () {}
+    /* Functions */
 
-    start () {
+    /**
+     * @desc Initialize time in game.
+     */
+    private start() : void {
 
     }
 
-    // update (dt) {}
+    /**
+     * @desc Update called every frame.
+     * @param { number } dt : Delta time.
+     */
+    private update(dt) : void {
+
+    }
 }
