@@ -26,7 +26,7 @@ export default class CQ_RotateAction extends cc.Component {
     /**
      * @desc Initialize time in game.
      */
-    private start() : void {
+    protected start() : void {
 
     }
 
@@ -34,7 +34,7 @@ export default class CQ_RotateAction extends cc.Component {
      * @desc Update called every frame.
      * @param { number } dt : Delta time.
      */
-    private update(dt) : void {
+    protected update(dt) : void {
 
     }
 }
