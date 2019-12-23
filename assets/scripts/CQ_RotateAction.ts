@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
-
-
 const {ccclass, property} = cc._decorator;
 
 @ccclass
