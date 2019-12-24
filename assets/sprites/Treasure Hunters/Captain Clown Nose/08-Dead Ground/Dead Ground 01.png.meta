@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "856dfa68-f281-4a19-b3b5-e1041788a634",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "Dead Ground 01": {
+      "ver": "1.0.4",
+      "uuid": "d8d6f952-c5bc-4768-9dd3-9086666dda7d",
+      "rawTextureUuid": "856dfa68-f281-4a19-b3b5-e1041788a634",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": -5,
+      "trimX": 17,
+      "trimY": 16,
+      "width": 29,
+      "height": 18,
+      "rawWidth": 64,
+      "rawHeight": 40,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
