@@ -8,6 +8,12 @@
  */
 const {ccclass, property} = cc._decorator;
 
+import { CQ_Sign } from "../enum/CQ_Sign";
+import { CQ_EnumValue } from "../util/CQ_EnumValue";
+
+/**
+ * @desc Do the self rotation by `speed` and `direction`.
+ */
 @ccclass
 export default class CQ_RotateAction extends cc.Component {
     /* Variables */
@@ -15,8 +21,19 @@ export default class CQ_RotateAction extends cc.Component {
     @property
     public active : boolean = true;
 
-    @property
-    public speed : number = 10;
+    @property({
+        tooltip: 'How fast this object rotates.',
+        type: cc.Float,
+        range: [1.0, 1000.0],
+        slide: true,
+    })
+    public speed : number = 10.0;
+
+    @property({
+        tooltip: "Direction this object rotates.",
+        type: cc.Enum(CQ_Sign),
+    })
+    public sign : CQ_Sign = CQ_Sign.POSITIVE;
 
     /* Setter & Getter */
 
@@ -29,7 +46,6 @@ export default class CQ_RotateAction extends cc.Component {
     protected update(dt) : void {
         if (!this.active)
             return;
-
-        this.node.angle += this.speed * dt;
+        this.node.angle += this.speed * CQ_EnumValue.getValue(this.sign) * dt;
     }
 }
