@@ -10,31 +10,26 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class CQ_RotateAction extends cc.Component {
-
     /* Variables */
 
-    @property(cc.Label)
-    label: cc.Label = null;
+    @property
+    public active : boolean = true;
 
     @property
-    text: string = 'hello';
+    public speed : number = 10;
 
     /* Setter & Getter */
 
     /* Functions */
 
     /**
-     * @desc Initialize time in game.
-     */
-    protected start() : void {
-
-    }
-
-    /**
      * @desc Update called every frame.
      * @param { number } dt : Delta time.
      */
     protected update(dt) : void {
+        if (!this.active)
+            return;
 
+        this.node.angle += this.speed * dt;
     }
 }
