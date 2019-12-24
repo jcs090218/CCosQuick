@@ -5,7 +5,7 @@
 
 
 # CCosQuick
-> Easily prototype your game with component driven library.
+> Prototype your game easily with component driven library built on top of Cocos Creator.
 
 This is the 3rd party library for [Cocos Creator](https://www.cocos.com/en/).
 It provide the fast and simple to use component driven script for you to customize
