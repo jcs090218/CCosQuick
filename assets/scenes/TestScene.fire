@@ -891,10 +891,12 @@
       "__id__": 21
     },
     "_enabled": true,
-    "texts": [],
-    "text": [
-      false
+    "texts": [
+      "Hello World...",
+      "",
+      ""
     ],
+    "spf": 0.2,
     "_id": "3bNPjrC4NBh5JhSvQdk6rN"
   }
 ]

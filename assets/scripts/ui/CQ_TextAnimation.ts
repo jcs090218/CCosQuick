@@ -15,20 +15,43 @@ export default class CQ_TextAnimation extends cc.Component {
     @property({
         tooltip: "List of text that are going to display in order.",
         type: cc.String,
+        multiline: true,
     })
     public texts : string[] = [];
 
-    public label : cc.Label = undefined;
+    @property({
+        tooltip: "Seconds per frame",
+        range: [1.0, 30.0],
+        slide: true,
+    })
+    private spf : number = 0.2;
+
+    private _label : cc.Label = undefined;
+
+    private _timer : number = 0.0;     // Timer to calculate frame.
+    private _frameIndex : number = 1;  // Current frame index.
 
     /* Setter & Getter */
 
     /* Functions */
 
     protected start() : void {
-        this.label = this.node.getComponent(cc.);
+        this._label = this.node.getComponent(cc.Label);
     }
 
     protected update(dt) : void {
+        this._timer += dt;
+
+        if (this._timer < this.spf) {
+
+        }
+    }
+
+    private updateTextFrame() : void {
+
+    }
+
+    private doTextAnimation() : void {
 
     }
 }
