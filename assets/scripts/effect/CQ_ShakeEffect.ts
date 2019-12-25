@@ -9,6 +9,8 @@
 const {ccclass, property} = cc._decorator;
 
 import { CQ_Random } from "../util/CQ_Random";
+import { CQ_Input } from "../util/CQ_Input";
+import { CQ_KeyCode } from "../enum/CQ_KeyCode";
 
 /**
  * @desc Do the shake effect by these variables applied.
@@ -56,6 +58,10 @@ export default class CQ_ShakeEffect extends cc.Component {
 
     protected update(dt) : void {
         this.doEffect(dt);
+
+        if (CQ_Input.getKeyDown(CQ_KeyCode.A)) {
+            this.doSake();
+        }
     }
 
     /**
@@ -73,7 +79,6 @@ export default class CQ_ShakeEffect extends cc.Component {
         this.shakeMargin = margin;
 
         this._shakeOrigin = this.node.position;
-        cc.log("shake origin: %s - %s", this._shakeOrigin.x, this._shakeOrigin.y);
         this._shakeTimer = 0;
 
         this._effecting = true;
