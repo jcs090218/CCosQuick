@@ -9,7 +9,6 @@
 const {ccclass, property} = cc._decorator;
 
 import { CQ_Input } from "../util/CQ_Input";
-import { CQ_KeyCode } from "../enum/CQ_KeyCode";
 
 @ccclass
 export default class CQ_InputManager extends cc.Component {
