@@ -58,10 +58,6 @@ export default class CQ_ShakeEffect extends cc.Component {
 
     protected update(dt) : void {
         this.doEffect(dt);
-
-        if (CQ_Input.getKeyDown(CQ_KeyCode.A)) {
-            this.doSake();
-        }
     }
 
     /**
