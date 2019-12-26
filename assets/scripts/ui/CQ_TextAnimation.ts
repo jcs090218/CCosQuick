@@ -21,7 +21,7 @@ export default class CQ_TextAnimation extends cc.Component {
 
     @property({
         tooltip: "Seconds per frame",
-        range: [1.0, 30.0],
+        range: [0.001, 30.0],
         slide: true,
     })
     private spf : number = 0.2;
@@ -29,7 +29,7 @@ export default class CQ_TextAnimation extends cc.Component {
     private _label : cc.Label = undefined;
 
     private _timer : number = 0.0;     // Timer to calculate frame.
-    private _frameIndex : number = 1;  // Current frame index.
+    private _frameIndex : number = 0;  // Current frame index.
 
     /* Setter & Getter */
 
@@ -37,21 +37,45 @@ export default class CQ_TextAnimation extends cc.Component {
 
     protected start() : void {
         this._label = this.node.getComponent(cc.Label);
+        this.updateTextFrameByIndex(0);  // Start with the first frame.
     }
 
     protected update(dt) : void {
+        this.doTextAnimation(dt);
+    }
+
+    /**
+     * @desc Update the text frame by frame index/id.
+     * @param { number } index : Index/Id of the frame.
+     */
+    private updateTextFrameByIndex(index : number) : void {
+        this._label.string = this.texts[index];
+    }
+
+    /**
+     * @desc Update the text frame by current frame index.
+     */
+    private updateTextFrame() : void {
+        this.updateTextFrameByIndex(this._frameIndex);
+    }
+
+    /**
+     * @desc Do the text animation here.
+     * @param { number } dt : Game time, delta time.
+     */
+    private doTextAnimation(dt) : void {
         this._timer += dt;
 
-        if (this._timer < this.spf) {
+        if (this._timer < this.spf)
+            return;
 
-        }
-    }
+        ++this._frameIndex;
 
-    private updateTextFrame() : void {
+        if (this._frameIndex >= this.texts.length)
+            this._frameIndex = 0;
 
-    }
+        this.updateTextFrame();
 
-    private doTextAnimation() : void {
-
+        this._timer = 0;
     }
 }
