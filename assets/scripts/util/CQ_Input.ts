@@ -101,11 +101,19 @@ export class CQ_Input {
         return false;
     }
 
+    /**
+     * @desc Callback/function that received key down event.
+     * @param { typename } evt : Key event returns from browser.
+     */
     public static keyDownEvent(evt) : void {
         let key : CQ_KeyCode = <CQ_KeyCode>evt.keyCode;
         CQ_Input.safePushKey(CQ_Input._keysPressedThisFrame, key);
     }
 
+    /**
+     * @desc Callback/function that received key up event.
+     * @param { typename } evt : Key event returns from browser.
+     */
     public static keyUpEvent(evt) : void {
         let key : CQ_KeyCode = <CQ_KeyCode>evt.keyCode;
 
