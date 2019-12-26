@@ -794,7 +794,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "label",
+    "_name": "CQ_TextAnimation",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -831,8 +831,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 432,
-      "y": 237,
+      "x": 497.016,
+      "y": 564.342,
       "z": 0
     },
     "_scale": {
@@ -892,11 +892,11 @@
     },
     "_enabled": true,
     "texts": [
-      "Hello World...",
-      "",
-      ""
+      "Hello World.",
+      "Hello World..",
+      "Hello World..."
     ],
-    "spf": 0.2,
+    "spf": 0.3,
     "_id": "3bNPjrC4NBh5JhSvQdk6rN"
   }
 ]
