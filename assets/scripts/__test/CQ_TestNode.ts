@@ -53,6 +53,12 @@ export default class CQ_TestNode extends cc.Component {
         }
 
         if (CQ_Input.getKey(CQ_KeyCode.Q)) {
+            // let newPos : cc.Vec2 = this._startingPoint;
+            // newPos.x += 10;
+            // let mto = cc.moveTo(1, cc.p(newPos.x, newPos.y)).easing(cc.easeInOut(1));
+            // this.node.stopAllActions();
+            // this.node.runAction(mto);
+
             cc.tween(this.node).to(1, {
                 scale: 2,
                 position: cc.v2(100, 100)
@@ -60,6 +66,12 @@ export default class CQ_TestNode extends cc.Component {
         }
 
         if (CQ_Input.getKey(CQ_KeyCode.W)) {
+            // let newPos : cc.Vec2 = this._startingPoint;
+            // newPos.x -= 10;
+            // let mto = cc.moveTo(1, cc.p(newPos.x, newPos.y)).easing(cc.easeInOut(1));
+            // this.node.stopAllActions();
+            // this.node.runAction(mto);
+
             cc.tween(this.node).to(1, {
                 scale: 1,
                 position: this._startingPoint
