@@ -7,6 +7,7 @@
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
 import { CQ_Sign } from "../enum/CQ_Sign";
+import { CQ_MouseButtonType } from "../enum/CQ_MouseButtonType";
 
 /**
  * @desc List of set of function that returns the actual valeu from
@@ -19,10 +20,28 @@ import { CQ_Sign } from "../enum/CQ_Sign";
  */
 export class CQ_EnumValue {
     /** @desc Get value from `CQ_Sign`. */
-    public static getValue(sign : CQ_Sign) : number {
+    public static getValue_CQ_Sign(sign : CQ_Sign) : number {
         switch (sign) {
             case CQ_Sign.POSITIVE: return 1;
             case CQ_Sign.NEGATIVE: return -1;
+        }
+    }
+
+    /** @desc Get key from `CQ_MouseButtonType`. */
+    public static getKey_CQ_MouseButtonType(sign : number) : CQ_MouseButtonType {
+        switch (sign) {
+            case 0: return CQ_MouseButtonType.LEFT;
+            case 1: return CQ_MouseButtonType.CENTER;
+            case 2: return CQ_MouseButtonType.RIGHT;
+        }
+    }
+
+    /** @desc Get value from `CQ_MouseButtonType`. */
+    public static getValue_CQ_MouseButtonType(sign : CQ_MouseButtonType) : number {
+        switch (sign) {
+            case CQ_MouseButtonType.LEFT: return 0;
+            case CQ_MouseButtonType.CENTER: return 1;
+            case CQ_MouseButtonType.RIGHT: return 2;
         }
     }
 }

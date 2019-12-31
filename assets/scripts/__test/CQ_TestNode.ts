@@ -19,10 +19,7 @@ export default class CQ_TestNode extends cc.Component {
 
     private _startingPoint : cc.Vec2 = undefined;
 
-    @property({
-        type: CQ_RotateAction,
-    })
-    private rotateAction : CQ_RotateAction = undefined;
+    private boxClone : cc.Node = undefined;
 
     @property({
         type: CQ_ShakeEffect
@@ -33,18 +30,8 @@ export default class CQ_TestNode extends cc.Component {
 
     /* Functions */
 
-    protected onLoad() : void {
-        // Flag to enable physic engine.
-        cc.director.getPhysicsManager().enabled = true;
-    }
-
     protected start() : void {
-        // this.rotateAction = this.node.getComponent(CQ_RotateAction);
-        // this.rotateAction.active = false;
         this._startingPoint = this.node.position;
-        cc.log("_startingPoint: %s, %s",
-               this._startingPoint.x,
-               this._startingPoint.y);
     }
 
     protected update(dt : number) : void {
@@ -52,9 +39,11 @@ export default class CQ_TestNode extends cc.Component {
             this.shakeEffect.doSake();
             cc.log("Down A");
         }
-        
-        if (CQ_Input.getKeyUp(CQ_KeyCode.S)) {
-            cc.log("Up S");
+
+        if (CQ_Input.getKeyDown(CQ_KeyCode.M)) {
+            let newNode : cc.Node = cc.instantiate(this.boxClone);
+            newNode.parent = cc.director.getScene();
+            newNode.setPosition(0, 0);
         }
 
         if (CQ_Input.getKey(CQ_KeyCode.Q)) {

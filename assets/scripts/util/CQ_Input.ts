@@ -124,6 +124,19 @@ export class CQ_Input {
         CQ_Input.removeKeyFromList(CQ_Input._keysPressedThisFrame, key);
     }
 
+
+    public static getMouseButton() : boolean {
+        return false;
+    }
+
+    public static getMouseButtonDown() : boolean {
+        return false;
+    }
+
+    public static getMouseButtonUp() : boolean {
+        return false;
+    }
+
     /**
      * @desc Initialize the keyboard receiver.
      * @param keyCode Key code.

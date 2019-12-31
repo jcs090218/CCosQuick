@@ -46,6 +46,6 @@ export default class CQ_RotateAction extends cc.Component {
     protected update(dt) : void {
         if (!this.active)
             return;
-        this.node.angle += this.speed * CQ_EnumValue.getValue(this.sign) * dt;
+        this.node.angle += this.speed * CQ_EnumValue.getValue_CQ_Sign(this.sign) * dt;
     }
 }
