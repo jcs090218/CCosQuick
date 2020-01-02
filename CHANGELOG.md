@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-01-02
+
+* Update core with network module. (CCosQuick)
+
 ### 2019-12-31
 
 * Test `physics` module. (CCosQuick)
