@@ -12,6 +12,8 @@ import CQ_RotateAction from '../action/CQ_RotateAction';
 import CQ_ShakeEffect from '../effect/CQ_ShakeEffect';
 import { CQ_Input } from '../util/CQ_Input';
 import { CQ_KeyCode } from '../enum/CQ_KeyCode';
+import { CQ_MouseButtonType } from "../enum/CQ_MouseButtonType";
+import { CQ_Random } from "../util/CQ_Random";
 
 @ccclass
 export default class CQ_TestNode extends cc.Component {
@@ -19,6 +21,9 @@ export default class CQ_TestNode extends cc.Component {
 
     private _startingPoint : cc.Vec2 = undefined;
 
+    @property({
+        type: cc.Node
+    })
     private boxClone : cc.Node = undefined;
 
     @property({
@@ -43,7 +48,8 @@ export default class CQ_TestNode extends cc.Component {
         if (CQ_Input.getKeyDown(CQ_KeyCode.M)) {
             let newNode : cc.Node = cc.instantiate(this.boxClone);
             newNode.parent = cc.director.getScene();
-            newNode.setPosition(0, 0);
+            newNode.setRotation(CQ_Random.rangeFloat(0.0, 360.0));
+            newNode.setPosition(CQ_Input.mousePosition);
         }
 
         if (CQ_Input.getKey(CQ_KeyCode.Q)) {
@@ -54,11 +60,23 @@ export default class CQ_TestNode extends cc.Component {
         }
 
         if (CQ_Input.getKey(CQ_KeyCode.W)) {
+            cc.log("Pressed D");
             cc.tween(this.node).to(1, {
                 scale: 1,
                 position: this._startingPoint
             }).start();
-            cc.log("Pressed D");
+        }
+
+        if (CQ_Input.getMouseButton(CQ_MouseButtonType.LEFT)) {
+            cc.log("[INFO] Pressed left.");
+        }
+
+        if (CQ_Input.getMouseButtonDown(CQ_MouseButtonType.LEFT)) {
+            cc.log("[INFO] Down left.");
+        }
+
+        if (CQ_Input.getMouseButtonUp(CQ_MouseButtonType.LEFT)) {
+            cc.log("[INFO] Up left.");
         }
     }
 }
