@@ -25,7 +25,7 @@ export default class CQ_TestPlayer extends cc.Component {
     // Refresh rate to send to the server.
     public static REFRESH_RATE : number = 1.0 / 30.0;
 
-    private static FAKE_PLAEYR_COUNT : number = 1;
+    private serverInit : boolean = false;
 
     @property({
         tooltip: "Gravity for this object to fall.",
@@ -83,11 +83,14 @@ export default class CQ_TestPlayer extends cc.Component {
 
         if (this.labelName === undefined)
             this.labelName = this.node.getComponentInChildren(cc.Label);
-
-        CQ_TestNetwork.instance.sendNewPlayerPacket(this.node.position);
     }
 
     protected update(dt : number) : void {
+        if (!this.serverInit && CQ_TestNetwork.SERVER_CONNECTED) {
+            CQ_TestNetwork.instance.sendNewPlayerPacket(this.node.position);
+            this.serverInit = true;
+        }
+
         this.controlPlayer(dt);
         this.updateGravity(dt);
         this.updatePosition(dt);
