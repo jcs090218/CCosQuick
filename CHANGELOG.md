@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-01-06
+
+* Implemented `CQ_Button` with test component `CQ_TestButton`. (CCosQuick)
+* Done demo with networking with [ws](https://www.npmjs.com/package/ws) library. (CCosQuick)
+
 ### 2020-01-02
 
 * Update core with network module. (CCosQuick)
