@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/jcs090218/CCosQuick.svg?branch=master)](https://travis-ci.com/jcs090218/CCosQuick)
-[![Unity Engine](https://img.shields.io/badge/Cocos%20Creator-2.1.3f1-blue.svg)](https://www.cocos.com/en/)
+[![Unity Engine](https://img.shields.io/badge/Cocos%20Creator-2.1.3-blue.svg)](https://www.cocos.com/en/)
 [![Release Tag](https://img.shields.io/github/tag/jcs090218/CCosQuick.svg?label=release)](https://github.com/jcs090218/CCosQuick/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
