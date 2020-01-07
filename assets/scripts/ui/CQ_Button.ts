@@ -6,12 +6,10 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2020 by Shen, Jen-Chieh $
  */
-const { ccclass, property } = cc._decorator;
 
 /**
  * Base button for easier implementation.
  */
-@ccclass
 export default abstract class CQ_Button extends cc.Component {
     /* Variables */
 
