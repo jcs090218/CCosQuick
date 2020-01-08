@@ -6,14 +6,25 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2020 by Shen, Jen-Chieh $
  */
-const { ccclass, property } = cc._decorator;
+const { ccclass, property, requireComponent } = cc._decorator;
+
+import { CQ_Debug } from '../util/CQ_Debug';
 
 /**
  * Play animation frame by frame with the same interval in SPF.
  */
 @ccclass
+@requireComponent(cc.Sprite)
 export default class CQ_Animation extends cc.Component {
     /* Variables */
+
+    // Sprite renderer that will display our sprite frame.
+    public sprite : cc.Sprite = undefined;
+
+    @property({
+        tooltip: 'Loop for this animation.',
+    })
+    public loop : boolean = true;
 
     @property({
         tooltip: 'Seconds per frame.',
@@ -21,10 +32,11 @@ export default class CQ_Animation extends cc.Component {
     })
     public SPF : number = 0.5;
 
-    //public frames : number = 0.0;
-
-    // Sprite renderer that will display our sprite frame.
-    private _sprite : cc.Sprite = undefined;
+    @property({
+        tooltip: 'List of sprite that will be display in order.',
+        type: [cc.SpriteFrame],
+    })
+    public frames : cc.SpriteFrame[] = [];
 
     // Time to calcualte each frame.
     private _timer : number = 0.0;
@@ -36,7 +48,7 @@ export default class CQ_Animation extends cc.Component {
     /* Functions */
 
     protected onLoad() : void {
-        this._sprite = this.getComponent(cc.Sprite);
+        this.sprite = this.getComponent(cc.Sprite);
     }
 
     protected update(dt : number) : void {
@@ -48,10 +60,11 @@ export default class CQ_Animation extends cc.Component {
      * @param { number } frameId : Frame id.
      */
     private playFrameById(frameId : number) : void {
-        if (this._sprite == null) {
+        if (this.sprite == null) {
             cc.warn("[WARNING] Sprite renderer doesn't exists while playing animation");
             return;
         }
+        this.sprite.spriteFrame = this.frames[frameId];
     }
 
     /**
@@ -67,6 +80,12 @@ export default class CQ_Animation extends cc.Component {
         this._timer = 0.0;
 
         ++this._frameId;
+        if (this._frameId >= this.frames.length) {
+            if (this.loop)
+                this._frameId = 0;
+            else
+                this._frameId = this.frames.length - 1;  // set to the last frame.
+        }
 
         this.playFrameById(this._frameId);
     }
