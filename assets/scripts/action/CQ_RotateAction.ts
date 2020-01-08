@@ -6,7 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
-const {ccclass, property} = cc._decorator;
+const { ccclass, property, requireComponent } = cc._decorator;
 
 import { CQ_Sign } from "../enum/CQ_Sign";
 import { CQ_EnumValue } from "../util/CQ_EnumValue";
@@ -43,7 +43,7 @@ export default class CQ_RotateAction extends cc.Component {
      * @desc Update called every frame.
      * @param { number } dt : Delta time.
      */
-    protected update(dt) : void {
+    protected update(dt : number ) : void {
         if (!this.active)
             return;
         this.node.angle += this.speed * CQ_EnumValue.getValue_CQ_Sign(this.sign) * dt;

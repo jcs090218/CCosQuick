@@ -6,7 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
-const {ccclass, property} = cc._decorator;
+const { ccclass, property, requireComponent } = cc._decorator;
 
 import { CQ_Random } from "../util/CQ_Random";
 import { CQ_Input } from "../util/CQ_Input";
@@ -51,10 +51,6 @@ export default class CQ_ShakeEffect extends cc.Component {
     /* Setter & Getter */
 
     /* Functions */
-
-    protected start() : void {
-        this.doSake();
-    }
 
     protected update(dt) : void {
         this.doEffect(dt);
