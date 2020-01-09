@@ -8,8 +8,6 @@
  */
 const { ccclass, property, requireComponent } = cc._decorator;
 
-import { CQ_Debug } from '../util/CQ_Debug';
-
 /**
  * Play animation frame by frame with the same interval in SPF.
  */
