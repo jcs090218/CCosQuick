@@ -13,12 +13,34 @@
 export class CQ_Debug {
     /* Variables */
 
-    public static log : any = console.log.bind(console, "[INFO] ");
-    public static warn : any = console.log.bind(console, "[WARNING] ");
-    public static error : any = console.log.bind(console, "[ERROR] ");
-
     /* Setter & Getter */
 
     /* Functions */
 
+    /**
+     * @desc Log the information message.
+     */
+    public static get log() : Function {
+        if (cc.debug)
+            return console.log.bind(console, '[INFO]');
+        return function () { };
+    }
+
+    /**
+     * @desc Log the warning message.
+     */
+    public static get warn () {
+        if (cc.debug)
+            return console.log.bind(console, '[WARNING]');
+        return function () { };
+    }
+
+    /**
+     * @desc Log the error message.
+     */
+    public static get error() {
+        if (cc.debug)
+            return console.log.bind(console, '[ERROR]');
+        return function () { };
+    }
 }
