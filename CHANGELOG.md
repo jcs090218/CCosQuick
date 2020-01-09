@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-01-09
 
 * Implemented `CQ_Animation`. (CCosQuick)
+* Update `debug` module. (CCosQuick)
 
 ### 2020-01-06
 
