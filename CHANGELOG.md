@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-01-09
+
+* Implemented `CQ_Animation`. (CCosQuick)
+
 ### 2020-01-06
 
 * Implemented `CQ_Button` with test component `CQ_TestButton`. (CCosQuick)
