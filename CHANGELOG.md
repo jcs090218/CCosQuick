@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-01-10
+
+* Implemented more `CQ_Animation`'s API. (CCosQuick)
+* Add module/unit test for `CQ_Animation`. (CCosQuick)
+
 ### 2020-01-09
 
 * Implemented `CQ_Animation`. (CCosQuick)
