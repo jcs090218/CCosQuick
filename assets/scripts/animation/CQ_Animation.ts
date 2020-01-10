@@ -8,8 +8,10 @@
  */
 const { ccclass, property, requireComponent } = cc._decorator;
 
+import { CQ_Debug } from "../util/CQ_Debug";
+
 /**
- * Play animation frame by frame with the same interval in SPF.
+ * @desc Play animation frame by frame with the same interval in SPF.
  */
 @ccclass
 @requireComponent(cc.Sprite)
@@ -54,12 +56,40 @@ export default class CQ_Animation extends cc.Component {
     }
 
     /**
+     * @desc Play the animation from the START frame.
+     * @param { Integer } start : Starting frame, default is the current frame.
+     */
+    public playAnimation(start : number = -1) : void {
+        if (start != -1) this._frameId = start;
+        this._timer = 0.0;
+        this.enabled = true;
+        this.sprite.enabled = true;  // Start the render process.
+    }
+
+    /**
+     * @desc Stop the animation.
+     * This will reset the frame to the starting (0) frame.
+     */
+    public stopAnimation() : void {
+        this.playAnimation(0);
+        this.enabled = false;
+        this.sprite.enabled = false;  // Stop the render process.
+    }
+
+    /**
+     * @desc Pause the animation.
+     */
+    public pauseAnimation() : void {
+        this.enabled = false;
+    }
+
+    /**
      * @desc Play the frame by frame  id.
      * @param { number } frameId : Frame id.
      */
     private playFrameById(frameId : number) : void {
         if (this.sprite == null) {
-            cc.warn("[WARNING] Sprite renderer doesn't exists while playing animation");
+            CQ_Debug.warn("[WARNING] Sprite renderer doesn't exists while playing animation");
             return;
         }
         this.sprite.spriteFrame = this.frames[frameId];

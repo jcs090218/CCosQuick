@@ -9,7 +9,13 @@
 const { ccclass, property, requireComponent } = cc._decorator;
 
 import CQ_Animation from './CQ_Animation';
+import { CQ_Debug } from '../util/CQ_Debug';
 
+/**
+ * @desc Handle multiple animations (CQ_Animation) object for
+ * controlling the flow/display from each animations that have been
+ * manage by this class.
+ */
 @ccclass
 export default class CQ_Animator extends cc.Component {
     /* Variables */
@@ -20,26 +26,59 @@ export default class CQ_Animator extends cc.Component {
     })
     public animations : CQ_Animation[] = [];
 
+    private _currentAnimation : CQ_Animation = undefined;
+
     /* Setter & Getter */
+
+    public get currentAnimation() : CQ_Animation { return this._currentAnimation; }
 
     /* Functions */
 
     protected onLoad() : void {
-        this.playAnimationByIndex(0);  // Play the first animation as default.
+        this.playAnimation(0);  // Play the first animation as default.
     }
 
     /**
      * @desc Play the animation by index in the array.
      * @param { number } index : Index number.
      */
-    private playAnimationByIndex(index : number) : void {
+    public playAnimation(index : number) : void {
         this.setEnabledAnimation(false);
         let targetAnim : CQ_Animation = this.animations[index];
         if (targetAnim == null) {
-            cc.log("Animation you are targeting is not allowed with index: %s", index);
+            CQ_Debug.warn("Animation you are targeting is not allowed with index:", index);
             return;
         }
-        targetAnim.enabled = true;
+        this._currentAnimation = targetAnim;  // Update the current animation.
+        this._currentAnimation.enabled = true;
+    }
+
+    public playOnShot(index : number) : void {
+        // TODO: ..
+    }
+
+    /**
+     * @desc Stop the animation at point/moment and reset the frame
+     * the first frame of the animation.
+     */
+    public stopAnimation() : void {
+        if (this._currentAnimation == null) {
+            CQ_Debug.warn("Can't stop animation with null references...");
+            return;
+        }
+        this._currentAnimation.playAnimation(0);
+        this._currentAnimation.enabled = false;
+    }
+
+    /**
+     * @desc Pause the animation at point/moment.
+     */
+    public pauseAnimation() : void {
+        if (this._currentAnimation == null) {
+            CQ_Debug.warn("Can't pause animation with null references...");
+            return;
+        }
+        this._currentAnimation.pauseAnimation();
     }
 
     /**
