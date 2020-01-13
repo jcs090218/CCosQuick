@@ -28,7 +28,7 @@ export default abstract class CQ_Button extends cc.Component {
     }
 
     /**
-     * @desc When click on this button.
+     * @desc Callback for this button when is clicked.
      */
     public abstract onclick() : void;
 }

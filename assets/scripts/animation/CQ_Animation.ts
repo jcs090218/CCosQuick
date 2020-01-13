@@ -43,7 +43,13 @@ export default class CQ_Animation extends cc.Component {
 
     private _frameId : number = 0;
 
+    private _donePlaying : boolean = true;
+
+
     /* Setter & Getter */
+
+    public get donePlaying() { return this._donePlaying; }
+
 
     /* Functions */
 
@@ -59,10 +65,13 @@ export default class CQ_Animation extends cc.Component {
      * @desc Play the animation from the START frame.
      * @param { Integer } start : Starting frame, default is the current frame.
      */
-    public playAnimation(start : number = -1) : void {
-        if (start != -1) this._frameId = start;
-        this._timer = 0.0;
-        this.enabled = true;
+    public play(start : number = -1) : void {
+        if (start != -1) {
+            this._frameId = start;
+            this._timer = 0.0;
+        }
+        this.unPause();
+        this._donePlaying = false;
         this.sprite.enabled = true;  // Start the render process.
     }
 
@@ -70,17 +79,24 @@ export default class CQ_Animation extends cc.Component {
      * @desc Stop the animation.
      * This will reset the frame to the starting (0) frame.
      */
-    public stopAnimation() : void {
-        this.playAnimation(0);
-        this.enabled = false;
+    public stop() : void {
+        this.play(0);
+        this.pause();
         this.sprite.enabled = false;  // Stop the render process.
     }
 
     /**
      * @desc Pause the animation.
      */
-    public pauseAnimation() : void {
+    public pause() : void {
         this.enabled = false;
+    }
+
+    /**
+     * @desc Unpause the animation.
+     */
+    public unPause() : void {
+        this.enabled = true;
     }
 
     /**
@@ -111,8 +127,10 @@ export default class CQ_Animation extends cc.Component {
         if (this._frameId >= this.frames.length) {
             if (this.loop)
                 this._frameId = 0;
-            else
+            else {
                 this._frameId = this.frames.length - 1;  // set to the last frame.
+                this._donePlaying = true;
+            }
         }
 
         this.playFrameById(this._frameId);

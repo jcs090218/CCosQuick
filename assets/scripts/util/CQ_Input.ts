@@ -104,7 +104,7 @@ export class CQ_Input {
     }
 
     /**
-     * @desc Check if the key is up?
+     * @desc Check if the key is up this frame.
      * @param keyCode Key code.
      * @returns True, key is up. False, key is not up.
      */
@@ -121,7 +121,7 @@ export class CQ_Input {
     }
 
     /**
-     * @desc Check if the key is down?
+     * @desc Check if the key is down this frame.
      * @param keyCode Key code.
      * @returns True, key is down. False, key is not down.
      */
@@ -144,7 +144,7 @@ export class CQ_Input {
     }
 
     /**
-     * @desc Check if the key is held down?
+     * @desc Check if the key is held down at the moment.
      * @param keyCode Key code.
      * @returns True, key is held down. False, key is not held down.
      */

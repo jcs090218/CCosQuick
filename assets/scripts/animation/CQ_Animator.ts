@@ -40,21 +40,40 @@ export default class CQ_Animator extends cc.Component {
 
     /**
      * @desc Play the animation by index in the array.
-     * @param { number } index : Index number.
+     * @param { Integer } index : Index number.
+     * @param { Integer } start : Starting frame, default is the current frame.
+     * @return { boolean } : Return true, if it plays. Vice versa, return false.
      */
-    public playAnimation(index : number) : void {
-        this.setEnabledAnimation(false);
+    public playAnimation(index : number, start : number = -1) : boolean {
+        if (this._currentAnimation)
+            this._currentAnimation.unPause();
+        this.setActiveAnimation(false);
         let targetAnim : CQ_Animation = this.animations[index];
         if (targetAnim == null) {
-            CQ_Debug.warn("Animation you are targeting is not allowed with index:", index);
-            return;
+            CQ_Debug.warn("Can't play animation with index:", index);
+            return false;
         }
+        let sameAnim : boolean = (targetAnim == this._currentAnimation);
         this._currentAnimation = targetAnim;  // Update the current animation.
-        this._currentAnimation.enabled = true;
+        this._currentAnimation.node.active = true;
+        this._currentAnimation.loop = true;
+        if (!sameAnim && start == -1)
+            this._currentAnimation.play(0);
+        else
+            this._currentAnimation.play(start);
+        return true;
     }
 
-    public playOnShot(index : number) : void {
-        // TODO: ..
+    /**
+     * @desc Play one animation but does not loop.
+     * @param { number } index : Index number.
+     * @return { boolean } : Return true, if it plays. Vice versa, return false.
+     */
+    public playOnShot(index : number) : boolean {
+        let plays : boolean = this.playAnimation(index);
+        if (!plays)  return false;
+        this._currentAnimation.loop = false;
+        return true;
     }
 
     /**
@@ -66,8 +85,8 @@ export default class CQ_Animator extends cc.Component {
             CQ_Debug.warn("Can't stop animation with null references...");
             return;
         }
-        this._currentAnimation.playAnimation(0);
-        this._currentAnimation.enabled = false;
+        this._currentAnimation.play(0);  // Play animation at starting frame.
+        this._currentAnimation.node.active = false;
     }
 
     /**
@@ -78,18 +97,29 @@ export default class CQ_Animator extends cc.Component {
             CQ_Debug.warn("Can't pause animation with null references...");
             return;
         }
-        this._currentAnimation.pauseAnimation();
+        this._currentAnimation.pause();
+    }
+
+    /**
+     * @desc Unpause the animation at point/moment.
+     */
+    public unPauseAnimation() : void {
+        if (this._currentAnimation == null) {
+            CQ_Debug.warn("Can't unpause animation with null references...");
+            return;
+        }
+        this._currentAnimation.unPause();
     }
 
     /**
      * @desc Set animation (CQ_Animation) component's enabled.
      * @param { boolean } act : Action for enable for disable.
      */
-    private setEnabledAnimation(act : boolean) {
+    private setActiveAnimation(act : boolean) {
         for (let index = 0; index < this.animations.length; ++index) {
             let anim = this.animations[index];
             if (anim == null) continue;
-            anim.enabled = act;
+            anim.node.active = act;
         }
     }
 }
