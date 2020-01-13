@@ -9,10 +9,9 @@
 
 import { CQ_KeyCode } from "../enum/CQ_KeyCode";
 import { CQ_MouseButtonType } from "../enum/CQ_MouseButtonType";
-import { CQ_EnumValue } from "../util/CQ_EnumValue";
 
 /**
- * @desc nput handle.
+ * @desc Input handle.
  */
 export class CQ_Input {
     private static _keysDown : CQ_KeyCode[] = [];
