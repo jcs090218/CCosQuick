@@ -19,7 +19,9 @@ import { CQ_MouseButtonType } from "../enum/CQ_MouseButtonType";
  * @link https://mrsmellypotato.wordpress.com/2019/04/02/negative-value-in-enum/
  */
 export class CQ_EnumValue {
-    /** @desc Get value from `CQ_Sign`. */
+    /**
+     * @desc Get value from `CQ_Sign`.
+     */
     public static getValue_CQ_Sign(sign : CQ_Sign) : number {
         switch (sign) {
             case CQ_Sign.POSITIVE: return 1;
@@ -27,7 +29,9 @@ export class CQ_EnumValue {
         }
     }
 
-    /** @desc Get key from `CQ_MouseButtonType`. */
+    /**
+     * @desc Get key from `CQ_MouseButtonType`.
+     */
     public static getKey_CQ_MouseButtonType(sign : number) : CQ_MouseButtonType {
         switch (sign) {
             case 0: return CQ_MouseButtonType.LEFT;
@@ -36,7 +40,9 @@ export class CQ_EnumValue {
         }
     }
 
-    /** @desc Get value from `CQ_MouseButtonType`. */
+    /**
+     * @desc Get value from `CQ_MouseButtonType`.
+     */
     public static getValue_CQ_MouseButtonType(sign : CQ_MouseButtonType) : number {
         switch (sign) {
             case CQ_MouseButtonType.LEFT: return 0;

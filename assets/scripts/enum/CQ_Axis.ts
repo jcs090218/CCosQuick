@@ -7,6 +7,9 @@
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
 
+/**
+ * @desc Definition of each dimension.
+ */
 export enum CQ_Axis {
     AXIS_X,
     AXIS_Y,

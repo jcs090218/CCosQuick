@@ -18,9 +18,6 @@ import { CQ_EnumValue } from "../util/CQ_EnumValue";
 export default class CQ_RotateAction extends cc.Component {
     /* Variables */
 
-    @property
-    public active : boolean = true;
-
     @property({
         tooltip: 'How fast this object rotates.',
         type: cc.Float,
@@ -39,13 +36,7 @@ export default class CQ_RotateAction extends cc.Component {
 
     /* Functions */
 
-    /**
-     * @desc Update called every frame.
-     * @param { number } dt : Delta time.
-     */
     protected update(dt : number ) : void {
-        if (!this.active)
-            return;
         this.node.angle += this.speed * CQ_EnumValue.getValue_CQ_Sign(this.sign) * dt;
     }
 }
