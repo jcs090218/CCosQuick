@@ -52,7 +52,7 @@ export default class CQ_ShakeEffect extends cc.Component {
 
     /* Functions */
 
-    protected update(dt) : void {
+    protected update(dt : number) : void {
         this.doEffect(dt);
     }
 
