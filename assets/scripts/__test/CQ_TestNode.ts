@@ -15,6 +15,10 @@ import { CQ_KeyCode } from '../enum/CQ_KeyCode';
 import { CQ_MouseButtonType } from "../enum/CQ_MouseButtonType";
 import { CQ_Random } from "../util/CQ_Random";
 
+/**
+ * @desc Major test Cocos Creator's node management system.
+ * Second test are the life cycle from their scripting layer.
+ */
 @ccclass
 export default class CQ_TestNode extends cc.Component {
     /* Variables */
@@ -65,18 +69,6 @@ export default class CQ_TestNode extends cc.Component {
                 scale: 1,
                 position: this._startingPoint
             }).start();
-        }
-
-        if (CQ_Input.getMouseButton(CQ_MouseButtonType.LEFT)) {
-            cc.log("[INFO] Pressed left.");
-        }
-
-        if (CQ_Input.getMouseButtonDown(CQ_MouseButtonType.LEFT)) {
-            cc.log("[INFO] Down left.");
-        }
-
-        if (CQ_Input.getMouseButtonUp(CQ_MouseButtonType.LEFT)) {
-            cc.log("[INFO] Up left.");
         }
     }
 }

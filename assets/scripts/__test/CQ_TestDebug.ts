@@ -12,6 +12,9 @@ import { CQ_Debug } from '../util/CQ_Debug'
 import { CQ_Input } from '../util/CQ_Input'
 import { CQ_KeyCode } from '../enum/CQ_KeyCode'
 
+/**
+ * @desc Test debug module (CQ_Debug) output.
+ */
 @ccclass
 export default class CQ_TestDebug extends cc.Component {
     /* Variables */
