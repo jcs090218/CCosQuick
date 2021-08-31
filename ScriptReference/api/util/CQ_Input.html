@@ -1,0 +1,10 @@
+<h1 id=cq_input>CQ_Input</h1><p>Input handle.<h2 id=variables>Variables</h2><table><thead><tr><th id=name style=text-align:left>Name<th id=description style=text-align:left>Description<tbody><tr><td style=text-align:left>mousePosition<td style=text-align:left>Position of the mouse on the screen.</table><h2 id=functions>Functions</h2><table><thead><tr><th id=name style=text-align:left>Name<th id=description style=text-align:left>Description<tbody><tr><td style=text-align:left>cleanInputBuffer<td style=text-align:left>Clean the input buffer every frame. Remember to call this in order to get the correct output for the event loop.<tr><td style=text-align:left>getMouseButtonUp<td style=text-align:left>Check if a mouse button click is up this frame.<tr><td style=text-align:left>getMouseButtonDown<td style=text-align:left>Check if a mouse button click in this frame.<tr><td style=text-align:left>getKeyUp<td style=text-align:left>Check if the key is up this frame.<tr><td style=text-align:left>getKeyDown<td style=text-align:left>Check if the key is down this frame.<tr><td style=text-align:left>getKey<td style=text-align:left>Check if the key is held at the moment.</table><h2 id=examples>Examples</h2><p>Example.ts<pre class="ts language-ts"><code class="hljs ts language-ts"><span class=hljs-class><span class=hljs-keyword>class</span> <span class=hljs-title>Example</span> </span>{
+    <span class=hljs-keyword>protected</span> update(dt : <span class=hljs-built_in>number</span>) : <span class=hljs-built_in>void</span> {
+        <span class=hljs-keyword>let</span> mousePos : cc.Vec2 = CQ_Input.mousePosition;
+        cc.log(<span class=hljs-string>&#x27;Mouse Position: %s - %s&#x27;</span>, mousePos.x, mousePos.y);
+
+        <span class=hljs-keyword>if</span> (CQ_Input.getKeyDown(CQ_KeyCode.A)) {
+            cc.log(<span class=hljs-string>&#x27;A key is down!&#x27;</span>);
+        }
+    }
+}</code></pre>

@@ -1,0 +1,33 @@
+<h1 id=about-tween>About Tween</h1><blockquote><p>This document is note for Tween module in Cocos Creator.</blockquote><ul><li><a href=https://blog.csdn.net/qq_26542493/article/details/90650799>https://blog.csdn.net/qq_26542493/article/details/90650799</a></ul><pre class="ts language-ts"><code class="hljs ts language-ts"><span class=hljs-comment>/* 移动 */</span>
+<span class=hljs-keyword>var</span> mto = cc.moveTo(<span class=hljs-number>1</span>,cc.v2(<span class=hljs-number>200</span>,<span class=hljs-number>200</span>));
+<span class=hljs-built_in>this</span>.node.runAction(mto);
+<span class=hljs-keyword>var</span> mby = cc.moveBy(<span class=hljs-number>0</span>,cc.v2(<span class=hljs-number>200</span>,<span class=hljs-number>200</span>));
+<span class=hljs-built_in>this</span>.node.runAction(mby);
+
+<span class=hljs-comment>/* 旋转 */</span>
+<span class=hljs-keyword>var</span> rto = cc.rotateTo(<span class=hljs-number>1</span>,<span class=hljs-number>180</span>);
+<span class=hljs-built_in>this</span>.node.runAction(rto);
+<span class=hljs-keyword>var</span> rby = cc.rotateBy(<span class=hljs-number>1</span>,<span class=hljs-number>30</span>);
+<span class=hljs-built_in>this</span>.node.runAction(rby);
+
+<span class=hljs-comment>/* 缩放 */</span>
+<span class=hljs-built_in>this</span>.node.scale = <span class=hljs-number>2</span>;    <span class=hljs-comment>//为了便于理解缩放的scaleTo和scaleBy，先指定了一个scale=2</span>
+<span class=hljs-keyword>var</span> sto = cc.scaleTo(<span class=hljs-number>1</span>,<span class=hljs-number>5</span>);   <span class=hljs-comment>//不管scale为多少,直接设置为节点原始大小的5倍</span>
+<span class=hljs-built_in>this</span>.node.runAction(sto);
+<span class=hljs-keyword>var</span> sby = cc.scaleBy(<span class=hljs-number>1</span>,<span class=hljs-number>3</span>);  <span class=hljs-comment>//这是相乘的结果，2*3=6，即节点原始大小的6倍</span>
+<span class=hljs-built_in>this</span>.node.runAction(sby);
+
+<span class=hljs-comment>/* 淡入淡出 */</span>
+<span class=hljs-keyword>var</span> fi = cc.fadeIn(<span class=hljs-number>1</span>);
+<span class=hljs-built_in>this</span>.node.runAction(fi);
+<span class=hljs-keyword>var</span> fo = cc.fadeOut(<span class=hljs-number>1</span>);
+<span class=hljs-built_in>this</span>.node.runAction(fo);
+<span class=hljs-keyword>var</span> ft = cc.fadeTo(<span class=hljs-number>1</span>,<span class=hljs-number>128</span>);
+<span class=hljs-built_in>this</span>.node.runAction(ft);
+
+<span class=hljs-comment>/* 动作序列 */</span>
+<span class=hljs-keyword>var</span> s1 = cc.scaleTo(<span class=hljs-number>1</span>,<span class=hljs-number>0.5</span>);
+<span class=hljs-keyword>var</span> s2 = cc.scaleTo(<span class=hljs-number>1</span>,<span class=hljs-number>1.5</span>);
+<span class=hljs-keyword>var</span> seq = cc.sequence([s1,s2]);  <span class=hljs-comment>//先缩小再放大</span>
+<span class=hljs-keyword>var</span> rep = cc.repeatForever(seq);  <span class=hljs-comment>//一直执行这个sequence</span>
+<span class=hljs-built_in>this</span>.node.runAction(rep);</code></pre>
