@@ -19,4 +19,4 @@ are good at it; this will also fit and enhance your workflow.
 
 ## :link: Links
 
-* *Manual/Scripting API* : <a href="https://jcs090218.github.io/CCosQuick/Manual/index.html">CCosQuick-Scripting-Manual</a>
+* *Manual/Scripting API:* [CCosQuick-Scripting-Manual](https://jcs090218.github.io/CCosQuick/Manual/index.html)
